@@ -1,0 +1,45 @@
+  +-------------------------------------------------------------+
+  |                      ActionDispatcher                       |
+  +-------------------------------------------------------------+
+  | - $actions (array): Array to store registered actions       |
+  |                                                             |
+  | + registerAction($pid, $className): void                    |  --> Register a new action with a unique pid
+  | + dispatch($pid, $request): void                            |  --> Dispatch the action based on pid
+  +-------------------------------------------------------------+
+                |  (Dispatches Action based on `pid`)
+                v
+  +-------------------------------------------------------------+
+  |                          ActionInterface                    |
+  +-------------------------------------------------------------+
+  | + execute($request): void                                    |  --> This method should be implemented in each Action class
+  +-------------------------------------------------------------+
+                |  (Implemented by)
+                v
+  +-------------------------------------------------------------+
+  |                        LoginAction                           |
+  +-------------------------------------------------------------+
+  | Implements: ActionInterface                                  |
+  |                                                             |
+  | + __construct($data): Constructor to receive request data  |
+  | + execute(): void                                            |  --> Handles the login logic (validate credentials)
+  +-------------------------------------------------------------+
+                |  (Uses)
+                v
+  +-------------------------------------------------------------+
+  |                           Session                            |
+  +-------------------------------------------------------------+
+  | - $_SESSION (array): Stores user session data               |
+  |                                                             |
+  | + session_start(): void                                      |  --> Starts the session to store session data
+  | + $_SESSION['phed_user']: User data (username, etc.)        |
+  | + $_SESSION['phed_id']: User ID                             |
+  +-------------------------------------------------------------+
+                |
+                v
+  +-------------------------------------------------------------+
+  |                          Client Request                      |
+  +-------------------------------------------------------------+
+  | - $_REQUEST: Contains the request data from the form (e.g., |
+  |   username, password)                                        |
+  +-------------------------------------------------------------+
+
